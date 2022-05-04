@@ -1,0 +1,52 @@
+{% extends 'subadmin/shared/base.html' %}
+
+{% block content %}
+            
+<div class="container">
+    <div class="row m-5">
+        <div class="col-md-8 bg-light p-5 rounded shadow offset-md-2 mt-5 text-center">
+            <h1>Criminal Details</h1>
+            <hr>
+            <img src="/media/{{ criminal.image }}" class="img-fluid" alt="Responsive image">
+            <table class="table text-left">
+                <tr>
+                    <th>Name</th>
+                    <td>:</td>
+                    <td>{{ criminal }}</td>
+                </tr>
+                <tr>
+                    <th>House Name</th>
+                    <td>:</td>
+                    <td>{{ criminal.house_name }}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>:</td>
+                    <td>{{ criminal.city.state }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>:</td>
+                    <td>{{ criminal.city }}</td>
+                </tr>
+                <tr>
+                    <th>Aadhar No</th>
+                    <td>:</td>
+                    <td>{{ criminal.aadhar_no }}</td>
+                </tr>
+                <tr>
+                    <th>Case Type</th>
+                    <td>:</td>
+                    <td>{{ criminal.casr_type }}</td>
+                </tr>
+                <tr>
+                    <th>Case File</th>
+                    <td>:</td>
+                    <td><a href="/media/{{ criminal.case_file }}" target="_blank">View Case File</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div> 
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'subadmin/shared/base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+    <div class="row mt-5 bg-light rounded shadow">
+        <div class="col-md-12 mt-4 text-center">
+            <h3>Manage Criminals</h3>
+            <table class="table table-stripped table-white">
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Name</th>
+                    <th>Hose Name</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Aadhar</th>
+                    <th>Case Type</th>
+                    <th>Image</th>
+                    <th>Case File</th>
+                    <th>Action</th>
+                </tr>
+                
+                {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.house_name }}</td>
+                        <td>{{ i.city.state }}</td>
+                        <td>{{ i.city }}</td>
+                        <td>{{ i.aadhar_no }}</td>
+                        <td>{{ i.casr_type }}</td>
+                        <td><img src="/media/{{ i.image }}" width="150px" alt="" srcset=""></td>
+                        <td><a href="/media/{{ i.case_file }}" target="_blank">View File</a></td>
+                        <td>
+                            <a href="{% url 'subadmin_edit_criminals' cid=i.id %}" class="btn btn-warning">E</a>
+                            <a href="{% url 'subadmin_remove_criminals' cid=i.id %}" class="btn btn-danger">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                    
+            </table>
+        </div>
+    </div> 
+
+{% endblock content %}

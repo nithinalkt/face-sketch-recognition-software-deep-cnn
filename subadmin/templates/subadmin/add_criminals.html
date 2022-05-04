@@ -1,0 +1,57 @@
+{% extends 'subadmin/shared/base.html' %}
+
+   
+{% block content %} 
+
+{% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-8 bg-light p-5 rounded shadow offset-md-2 mt-5 text-center">
+                <h1>Add Criminals</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form1|crispy }}
+                    <label for="state">States*</label>
+                    <select name="state" id="state" class="form-control">
+                        <option value="---">------</option>
+                        
+                        {% for state in states %}
+                            <option value="{{ state.id }}">{{ state }}</option>
+                        {% endfor %}
+                            
+                    </select>
+                    <label for="city">City*</label>
+                    <select name="city" id="city" class="form-control">
+                        <option value="---">------</option>
+                            
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            $(function(){
+                $('#state').change(function(){
+                    state = $(this).val()
+                    data = {'state': state}
+                    $.get('/subadmin/get_city', data, function(res){
+                        // res = JSON.stringify(res)
+                        res = JSON.parse(res.data)
+                        console.log(res.data)
+                        s = '<option value="---">------</option>'
+                        $.each(res, function(i, v){
+                            // console.log(v)
+                            s += '<option value="'+ v.id +'">' + v.name + '</option>'
+                        })
+                        $('#city').html(s)
+                    })
+                })
+            })
+        });
+    </script>
+{% endblock content %}
