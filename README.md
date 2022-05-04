@@ -7,10 +7,25 @@ run main.py file and save the .h5 file in the folder name main
 
 open the whole files as a single folder in cmd
 cmd:
+
+
+
+
+
      python manage.py runserver
+     
+     
+     
+     
      softwrae runs in the localhost
      
 to create new admin:
+
+
+
+
+
+
      python manage.py ceatesuperuser
 
 
