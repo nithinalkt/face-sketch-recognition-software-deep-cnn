@@ -17,7 +17,7 @@ cmd:
      
      
      
-     softwrae runs in the localhost
+   softwrae runs in the localhost
      
 to create new admin:
 
