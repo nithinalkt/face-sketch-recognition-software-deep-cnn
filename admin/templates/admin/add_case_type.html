@@ -1,0 +1,42 @@
+{% extends 'admin/shared/base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+    <div class="row m-5 bg-light rounded shadow">
+        <div class="col-md-8 text-center">
+            <h3>Case Types</h3>
+            <table class="table table-stripped table-white">
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Case Type</th>
+                    <th>Action</th>
+                </tr>
+                
+                {% for i in case_types %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>
+                            <a href="{% url 'remove_case_type' case_type_id=i.id %}" class="btn btn-danger">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                    
+            </table>
+        </div>
+        <div class="col-md-4 bg-light p-5 rounded shadow text-center">
+            <h3>Add Case Type</h3>
+            <form action="" method="post" autocomplete="off">
+                {% csrf_token %}
+
+                {{ form|crispy }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                </div>
+            </form>
+        </div>
+    </div> 
+
+{% endblock content %}

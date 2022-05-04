@@ -1,0 +1,23 @@
+{% extends 'admin/shared/base.html' %}
+
+   
+{% block content %} 
+
+{% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-8 bg-light p-5 rounded shadow offset-md-2 mt-5 text-center">
+                <h1>Sub Admin Registration</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form1|crispy }}
+                    {{ form2|crispy }}
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
